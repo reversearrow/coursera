@@ -61,10 +61,10 @@ public class part1 {
         //parser = fr.getCSVParser();
         //System.out.println(countryInfo(parser, "Shambala"));
         //parser = fr.getCSVParser();
-        //listExportersTwoProducts(parser, "gold", "diamonds");
-        //parser = fr.getCSVParser();
-        //System.out.println(numberOfExporters(parser, "gold"));
-        //parser = fr.getCSVParser();
+        listExportersTwoProducts(parser, "cotton", "flowers");
+        parser = fr.getCSVParser();
+        System.out.println(numberOfExporters(parser, "cocoa"));
+        parser = fr.getCSVParser();
         bigExporters(parser, "$999,999,999,999");
     }
 
