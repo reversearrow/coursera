@@ -64,9 +64,7 @@ public class part1 {
         return countCG/dna.length();
     }
     
-    private int countGenes(String dna){
-        return 0;
-    }
+
     
     private int countCTG(String dna){
         int occurances = 0;
@@ -78,6 +76,22 @@ public class part1 {
         return occurances;
     }
    
+    private int countAllGenes(String dna){
+        int count = 0;
+        int startIndex = 0; 
+        while(true){
+            String gene = findGene(dna, startIndex);
+            if (gene == ""){
+                break;
+            }
+            count += 1;
+            startIndex = dna.indexOf(gene, startIndex) + gene.length();
+
+        }
+        return count;
+    }
+    
+    
     private void printAllGenes(String dna){
         int startIndex = 0; 
         while(true){
@@ -113,6 +127,10 @@ public class part1 {
         System.out.println("Length of the Longest String " + lengthOfTheLongestGene);
     }
      
+    public double testDouble(){
+        return ((double) 1)/4;
+    }
+    
     public void testFindStopCodon(){
         System.out.println(findStopCodon("",0,""));
         System.out.println(findStopCodon("ATGAAABAACATAGATAA",0,"TAA"));
@@ -130,7 +148,8 @@ public class part1 {
     
     public void testPrintAllDNA(){
         System.out.println("Test Printing All DNA");
-        printAllGenes("ATGTAAGATGCCCTAGT");
+        //printAllGenes("ATGTAAGATGCCCTAGT");
+        printAllGenes("AAAAAAAAAAAAAAAAAAJAJNCAOSNCAONSCOASNCOAISKCNOASNCASICNOASCANOCIANSNCOANSCANOISCINOASOICONASCONIASNCO");
     }
     
     public void countCGRatio(){
@@ -152,11 +171,11 @@ public class part1 {
     }
     
     public void testRealDNA(){
-       FileResource fr = new FileResource("test.txt");
+       FileResource fr = new FileResource("GRch38dnapart.fa");
        String dna = fr.asString().toUpperCase();
-       printAllGenes(dna);
-       //printAllGenes(dna);
-       //StorageResource allGenes = getAllGenes(dna);
-       //processGenes(allGenes);
+       System.out.println("CTG " + countCTG(dna));
+       System.out.println("All Counted Genes " + countAllGenes(dna));
+       StorageResource allGenes = getAllGenes(dna);
+       processGenes(allGenes);
     }
 }
